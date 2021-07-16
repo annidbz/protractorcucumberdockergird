@@ -19,6 +19,7 @@ Below are the steps to execute the :
 ->To run on selenium grid giving docker and dockerhub is already insalled on local machine
 
 1)Run docker-compose up
-2)Run command  "protracor Configurationgrid.js"
+2)Navigate to out folder of the package 
+3)Run command  "protracor Configurationgrid.js"
 
  
