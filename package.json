@@ -1,0 +1,25 @@
+{
+  "name": "protractorcucumber",
+  "version": "1.0.0",
+  "description": "initial framework",
+  "main": "index.js",
+  "test": "cucumber-js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "protractor": "^7.0.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.2.1",
+    "axios": "^0.21.1",
+    "cucumber": "^7.0.0-rc.0",
+    "cucumber-html-reporter": "^5.2.0",
+    "protractor-cucumber-framework": "^8.1.0",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.1"
+  }
+}
