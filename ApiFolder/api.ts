@@ -7,7 +7,13 @@ export class Api {
            // 'Accept':'application/json',
             //'Content-Type': 'application/json' 
             };
+           // const auth = {
+            //    username: "user",
+             //   password: "password"
+              //};
+            
             const response = await axios({
+                
                 method: 'get',
                 url: getApiUrl,
               //  headers: headers,
@@ -17,7 +23,7 @@ export class Api {
         return await response;
 
         } catch (error) {
-          //  console.log('Failed with url '+ url & ' Found error '+ error);
+       //   console.log('Failed with url '+ url & ' Found error '+ error);
         }
     }
 }

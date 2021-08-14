@@ -38,22 +38,69 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var cucumber_1 = require("cucumber");
 var protractor_1 = require("protractor");
 var HomePage_1 = require("../../PageObject/HomePage");
+var ProtractorFunctions_1 = require("../../Functions/ProtractorFunctions");
+var test_1 = require("../../PageObject/test");
+//import { data } from '../../JSONData/testjson';
+//const fs = require('fs');
+//const data = require("../../JSONData/testjson");
+var data = require("../../JSONData/testdata.json");
+var fs = require('fs');
 var Api_1 = require("../../ApiFolder/Api");
+var ExcelReader_1 = require("../../XLSX/ExcelReader");
 var expect = require("chai").expect;
 protractor_1.browser.ignoreSynchronisation = true;
 var hp = new HomePage_1.HomePage();
 var api = new Api_1.Api();
+var t = new test_1.test();
+var protractorfunctions = new ProtractorFunctions_1.ProtractorFunctions();
 var EC = protractor_1.protractor.ExpectedConditions;
-cucumber_1.Given('I launch the {string}', { timeout: 60 * 1000 }, function (url) {
+//let readjson = new testjson();
+//let rawdata = await fs.readFileSync('../../JSONData/testjson.json');
+//let rawdata = fs.readFileSync(__dirname+'../../JSONData/testdata.json', 'utf8');
+//let data = JSON.parse(rawdata);
+cucumber_1.Given('I launch the {string}', { timeout: 60 * 1000 }, function (url1) {
     return __awaiter(this, void 0, void 0, function () {
+        var condata;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, protractor_1.browser.sleep(4000)];
+                case 0: 
+                // await test.testfibonacci();
+                // await test.secondlargestnumber();
+                // await test.armstrongnumber(153);
+                // await test.armstrongnumber(143);
+                // await test.reverseString();
+                //   t.namecall();
+                return [4 /*yield*/, ExcelReader_1.ExcelReader.readExcelFile()];
                 case 1:
+                    // await test.testfibonacci();
+                    // await test.secondlargestnumber();
+                    // await test.armstrongnumber(153);
+                    // await test.armstrongnumber(143);
+                    // await test.reverseString();
+                    //   t.namecall();
                     _a.sent();
-                    return [4 /*yield*/, protractor_1.browser.get(url)];
+                    return [4 /*yield*/, ExcelReader_1.ExcelReader.ExcelToJson()];
                 case 2:
+                    condata = _a.sent();
+                    console.log(condata);
+                    return [4 /*yield*/, protractorfunctions.implicitwait(3000)];
+                case 3:
                     _a.sent();
+                    return [4 /*yield*/, protractorfunctions.threadsleep(3000)];
+                case 4:
+                    _a.sent();
+                    return [4 /*yield*/, protractorfunctions.geturl(data.url)];
+                case 5:
+                    _a.sent();
+                    // let mySet = new Set();  
+                    //  let arr: String[];
+                    //  arr = await browser.getAllWindowHandles();
+                    // console.log("sdsdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
+                    //browser.switchTo().alert().accept;
+                    //console.log(arr)
+                    console.log(data.tasks.task1);
+                    console.log(data.tasks.task2);
+                    console.log(data.tasks.task3);
                     return [2 /*return*/];
             }
         });
@@ -63,13 +110,13 @@ cucumber_1.When('enter {string} under todo', { timeout: 60 * 1000 }, function (t
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, protractor_1.browser.wait(EC.elementToBeClickable(hp.txt_todo), 10000)];
+                case 0: return [4 /*yield*/, protractorfunctions.protractorExplicitWait(hp.txt_todo, 1000)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, hp.txt_todo.sendKeys(text)];
+                    return [4 /*yield*/, protractorfunctions.protractorsendKeys(hp.txt_todo, text)];
                 case 2:
                     _a.sent();
-                    return [4 /*yield*/, protractor_1.browser.sleep(4000)];
+                    return [4 /*yield*/, protractorfunctions.threadsleep(3000)];
                 case 3:
                     _a.sent();
                     return [2 /*return*/];
@@ -81,7 +128,7 @@ cucumber_1.When('perform submit', { timeout: 60 * 1000 }, function () {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, protractor_1.browser.actions().sendKeys(protractor_1.protractor.Key.ENTER).perform()];
+                case 0: return [4 /*yield*/, protractorfunctions.protractorKeyEnter()];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];
@@ -94,7 +141,7 @@ cucumber_1.When('todo task with {string} should  be added successfully', { timeo
         return __generator(this, function (_a) {
             console.log(hp.lbl_alltasks.getText());
             hp.lbl_alltasks.then(function () {
-                hp.lbl_alltasks.getText().then(function (text) {
+                protractorfunctions.protractorgetText(hp.lbl_alltasks).then(function (text) {
                     console.log(text);
                 });
             });
@@ -106,10 +153,10 @@ cucumber_1.When('user delete {string} it should be deleted', { timeout: 60 * 100
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, protractor_1.browser.sleep(4000)];
+                case 0: return [4 /*yield*/, protractorfunctions.threadsleep(3000)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, protractor_1.browser.executeScript("arguments[0].click();", hp.btn_taskdelete)];
+                    return [4 /*yield*/, protractorfunctions.protractorjavaScriptExecuter("arguments[0].click();", hp.btn_taskdelete)];
                 case 2:
                     _a.sent();
                     return [2 /*return*/];
@@ -191,8 +238,11 @@ cucumber_1.When('mark {string} as complete', { timeout: 60 * 1000 }, function (t
                     return [4 /*yield*/, protractor_1.browser.sleep(4000)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, hp.btn_TaskCompleted.click()];
+                    return [4 /*yield*/, protractor_1.browser.switchTo().alert().accept()];
                 case 2:
+                    _a.sent();
+                    return [4 /*yield*/, protractorfunctions.protractorclick(hp.btn_TaskCompleted)];
+                case 3:
                     _a.sent();
                     return [2 /*return*/];
             }
@@ -201,51 +251,74 @@ cucumber_1.When('mark {string} as complete', { timeout: 60 * 1000 }, function (t
 });
 cucumber_1.When('verify {string} call to {string} posts', { timeout: 60 * 1000 }, function (call, type) {
     return __awaiter(this, void 0, void 0, function () {
-        var resp, _a, _b, _c, resp, _d, _e, _f, resp, _g, _h;
-        return __generator(this, function (_j) {
-            switch (_j.label) {
+        var resp, _a, resp, _b, _c, _d, resp, _e, _f;
+        return __generator(this, function (_g) {
+            switch (_g.label) {
                 case 0:
-                    if (!(call == "GET")) return [3 /*break*/, 10];
-                    if (!(type == "Allpost")) return [3 /*break*/, 3];
+                    if (!(call == "GET")) return [3 /*break*/, 9];
+                    if (!(type == "Allpost")) return [3 /*break*/, 2];
                     resp = api.getrequest('https://jsonplaceholder.typicode.com/posts');
-                    _b = (_a = console).log;
+                    // console.log((await resp).status);
+                    _a = expect;
                     return [4 /*yield*/, resp];
                 case 1:
-                    _b.apply(_a, [(_j.sent()).status]);
+                    // console.log((await resp).status);
+                    _a.apply(void 0, [(_g.sent()).status]).to.equal(200);
+                    return [3 /*break*/, 9];
+                case 2:
+                    if (!(type == "Firstpost")) return [3 /*break*/, 6];
+                    resp = api.getrequest('https://jsonplaceholder.typicode.com/posts/1');
+                    _b = expect;
+                    return [4 /*yield*/, resp];
+                case 3:
+                    _b.apply(void 0, [(_g.sent()).status]).to.equal(200);
                     _c = expect;
                     return [4 /*yield*/, resp];
-                case 2:
-                    _c.apply(void 0, [(_j.sent()).status]).to.equal(200);
-                    return [3 /*break*/, 10];
-                case 3:
-                    if (!(type == "Firstpost")) return [3 /*break*/, 7];
-                    resp = api.getrequest('https://jsonplaceholder.typicode.com/posts/1');
+                case 4:
+                    _c.apply(void 0, [(_g.sent()).data.userId]).to.equal(1);
                     _d = expect;
                     return [4 /*yield*/, resp];
-                case 4:
-                    _d.apply(void 0, [(_j.sent()).status]).to.equal(200);
+                case 5:
+                    _d.apply(void 0, [(_g.sent()).data.title]).to.equal('sunt aut facere repellat provident occaecati excepturi optio reprehenderit');
+                    return [3 /*break*/, 9];
+                case 6:
+                    if (!(type == "withid1")) return [3 /*break*/, 9];
+                    resp = api.getrequest('https://jsonplaceholder.typicode.com/comments?postId=1');
                     _e = expect;
                     return [4 /*yield*/, resp];
-                case 5:
-                    _e.apply(void 0, [(_j.sent()).data.userId]).to.equal(1);
+                case 7:
+                    _e.apply(void 0, [(_g.sent()).status]).to.equal(201);
                     _f = expect;
                     return [4 /*yield*/, resp];
-                case 6:
-                    _f.apply(void 0, [(_j.sent()).data.title]).to.equal('sunt aut facere repellat provident occaecati excepturi optio reprehenderit');
-                    return [3 /*break*/, 10];
-                case 7:
-                    if (!(type == "withid1")) return [3 /*break*/, 10];
-                    resp = api.getrequest('https://jsonplaceholder.typicode.com/comments?postId=1');
-                    _g = expect;
-                    return [4 /*yield*/, resp];
                 case 8:
-                    _g.apply(void 0, [(_j.sent()).status]).to.equal(200);
-                    _h = expect;
-                    return [4 /*yield*/, resp];
-                case 9:
-                    _h.apply(void 0, [(_j.sent()).data[0].postId]).to.equal(1);
-                    _j.label = 10;
-                case 10: return [2 /*return*/];
+                    _f.apply(void 0, [(_g.sent()).data[0].postId]).to.equal(1);
+                    _g.label = 9;
+                case 9: return [2 /*return*/];
+            }
+        });
+    });
+});
+cucumber_1.Before(function () {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            protractor_1.browser.manage().deleteAllCookies();
+            return [2 /*return*/];
+        });
+    });
+});
+cucumber_1.After(function (scenario) {
+    return __awaiter(this, void 0, void 0, function () {
+        var screenshot;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!(scenario.result.status === cucumber_1.Status.FAILED)) return [3 /*break*/, 2];
+                    return [4 /*yield*/, protractor_1.browser.takeScreenshot()];
+                case 1:
+                    screenshot = _a.sent();
+                    this.attach(screenshot, "image/png");
+                    _a.label = 2;
+                case 2: return [2 /*return*/];
             }
         });
     });

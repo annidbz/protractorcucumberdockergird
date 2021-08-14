@@ -15,14 +15,6 @@ constructor(){
     this.btn_TaskCompleted=element(By.xpath("//label[text()='TaskCompleted']/../child::*[1]"));
     this.tab_active=element(By.xpath("//a[text()='Active']"));
     this.tab_Completed=element(By.xpath("//a[text()='Completed']"));
-
-
-    
-    
-    
-    
-    
-    
     }
 
 }
