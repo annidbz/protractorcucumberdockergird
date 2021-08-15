@@ -214,6 +214,9 @@ var test = /** @class */ (function () {
             set.add(arr[index]);
         }
     };
+    test.compare = function (a, b) {
+        return a - b;
+    };
     return test;
 }());
 exports.test = test;

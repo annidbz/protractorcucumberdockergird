@@ -36,6 +36,10 @@ Given('I launch the {string}',{ timeout: 60 * 1000 }, async function(url1){
  // await test.armstrongnumber(143);
  // await test.reverseString();
  //   t.namecall();
+ let arrsort: number[]= [1,5,7,3,2,4,6,33,56];
+ console.log("SORTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+  console.log(arrsort.sort(test.compare));
+  console.log(arrsort.sort().map(arr=>((arr.toString()))));
    await ExcelReader.readExcelFile();
    var condata = await ExcelReader.ExcelToJson();
    console.log(condata);

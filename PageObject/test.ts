@@ -169,7 +169,12 @@ static repetable(){
          }
          set.add(arr[index]);
     }
-    
+
+}
+
+
+static compare(a,b){
+    return a-b;
 }
 
 

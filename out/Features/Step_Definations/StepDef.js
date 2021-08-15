@@ -60,24 +60,16 @@ var EC = protractor_1.protractor.ExpectedConditions;
 //let data = JSON.parse(rawdata);
 cucumber_1.Given('I launch the {string}', { timeout: 60 * 1000 }, function (url1) {
     return __awaiter(this, void 0, void 0, function () {
-        var condata;
+        var arrsort, condata;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: 
-                // await test.testfibonacci();
-                // await test.secondlargestnumber();
-                // await test.armstrongnumber(153);
-                // await test.armstrongnumber(143);
-                // await test.reverseString();
-                //   t.namecall();
-                return [4 /*yield*/, ExcelReader_1.ExcelReader.readExcelFile()];
+                case 0:
+                    arrsort = [1, 5, 7, 3, 2, 4, 6, 33, 56];
+                    console.log("SORTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+                    console.log(arrsort.sort(test_1.test.compare));
+                    console.log(arrsort.sort().map(function (arr) { return ((arr.toString())); }));
+                    return [4 /*yield*/, ExcelReader_1.ExcelReader.readExcelFile()];
                 case 1:
-                    // await test.testfibonacci();
-                    // await test.secondlargestnumber();
-                    // await test.armstrongnumber(153);
-                    // await test.armstrongnumber(143);
-                    // await test.reverseString();
-                    //   t.namecall();
                     _a.sent();
                     return [4 /*yield*/, ExcelReader_1.ExcelReader.ExcelToJson()];
                 case 2:
